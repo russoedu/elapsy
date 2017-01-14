@@ -1,0 +1,26 @@
+{
+  "name": "elapsy",
+  "version": "1.0.0",
+  "description": "Elapsy is a singleton class that calculates the elapsed time from the moment the first instance until the moment one of the possible functions is called.",
+  "main": "elapsy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/russoedu/elapsy.git"
+  },
+  "keywords": [
+    "time",
+    "elapsed",
+    "execution",
+    "time",
+    "ecma6"
+  ],
+  "author": "Eduardo Russo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/russoedu/elapsy/issues"
+  },
+  "homepage": "https://github.com/russoedu/elapsy#readme"
+}
