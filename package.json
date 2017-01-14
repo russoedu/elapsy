@@ -1,6 +1,6 @@
 {
   "name": "elapsy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Elapsy is a singleton class that calculates the elapsed time from the moment the first instance until the moment one of the possible functions is called.",
   "main": "elapsy.js",
   "scripts": {
