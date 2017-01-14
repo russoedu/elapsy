@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/russoedu/elapsy/issues"
   },
-  "homepage": "https://github.com/russoedu/elapsy#readme"
+  "homepage": "https://github.com/russoedu/elapsy#readme",
+  "dependencies": {
+    "chalk": "^1.1.3"
+  }
 }
