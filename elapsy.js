@@ -27,6 +27,7 @@ class Elapsy {
     }
     this.startTime = new Date();
 
+    console.log(this);
     return instance;
   }
 
@@ -51,7 +52,7 @@ class Elapsy {
    *          428 days, 04:58:23.032
    */
   formated() {
-    const elapsedTime = this.elapsedTime();
+    const elapsedTime = this.time();
     let response = '';
     if (elapsedTime < 1000) {
       response = `00:00:00.${pad(elapsedTime, 3)}`;
@@ -92,7 +93,7 @@ class Elapsy {
    */
   log(color = 'blue') {
     const width = process.stdout.columns - 3;
-    const elapsed = this.formatedElapsedTime();
+    const elapsed = this.formated();
     const position = width - elapsed.length;
     process.stdout.cursorTo(position);
     process.stdout.write(chalk[color](`[${elapsed}]`));
