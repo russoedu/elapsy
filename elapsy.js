@@ -92,7 +92,7 @@ class Elapsy {
    * [WORKING] 5 links crawled                                   [00:00:03.071]
    */
   log(color = 'blue') {
-    const width = process.stdout.columns - 3;
+    const width = process.stdout.columns - 2;
     const elapsed = this.formated();
     const position = width - elapsed.length;
     process.stdout.cursorTo(position);
