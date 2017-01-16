@@ -27,7 +27,6 @@ class Elapsy {
     }
     this.startTime = new Date();
 
-    console.log(this);
     return instance;
   }
 
@@ -36,7 +35,8 @@ class Elapsy {
    * @method elapsedTime
    * @return {Number} The elapsed time in miliseconds
    */
-  time(now = new Date().getTime()) {
+  time() {
+    const now = new Date().getTime();
     return now - this.startTime.getTime();
   }
 
@@ -53,34 +53,17 @@ class Elapsy {
    */
   formated() {
     const elapsedTime = this.time();
-    let response = '';
-    if (elapsedTime < 1000) {
-      response = `00:00:00.${pad(elapsedTime, 3)}`;
-    } else if (elapsedTime >= 1000 && elapsedTime < 60 * 1000) {
-      const sec = pad(parseInt((elapsedTime / 1000).toString(), 10), 2);
-      const ms = pad(elapsedTime % 1000, 3);
-      response = `00:00:${sec}.${ms}`;
-    } else if (elapsedTime >= 60 * 100 && elapsedTime < 60 * 60 * 100) {
-      const min = pad(parseInt((elapsedTime / 60 / 1000).toString(), 10), 2);
-      const sec = pad(parseInt((elapsedTime / 1000).toString(), 10), 2);
-      const ms = pad(elapsedTime % 1000, 3);
-      response = `00:${min}:${sec}.${ms}`;
-    } else if (elapsedTime >= 60 * 60 * 100 && elapsedTime < 24 * 60 * 60 * 100) {
-      const hour = pad(parseInt((elapsedTime / 60 / 60 / 1000).toString(), 10), 2);
-      const min = pad(parseInt((elapsedTime / 60 / 1000).toString(), 10), 2);
-      const sec = pad(parseInt((elapsedTime / 1000).toString(), 10), 2);
-      const ms = pad(elapsedTime % 1000, 3);
-      response = `${hour}:${min}:${sec}.${ms}`;
-    } else {
-      const day = parseInt((elapsedTime / 24 / 60 / 60 / 1000).toString(), 10);
-      const plural = day === 1 ? '' : 's';
-      const hour = pad(parseInt((elapsedTime / 60 / 60 / 1000).toString(), 10), 2);
-      const min = pad(parseInt((elapsedTime / 60 / 1000).toString(), 10), 2);
-      const sec = pad(parseInt((elapsedTime / 1000).toString(), 10), 2);
-      const ms = pad(elapsedTime % 1000, 3);
-      response = `${day} day${plural}, ${hour}:${min}:${sec}.${ms}`;
-    }
-    return response;
+    const date = new Date(elapsedTime);
+
+    const d = (date.getUTCDate()-1);
+    const plural = d === 1 ? '' : 's';
+    const day = d === 0 ? '' : `${d} day${plural}, `;
+
+    const hour = pad(date.getUTCHours().toString(), 2);
+    const min = pad(date.getUTCMinutes().toString(), 2);
+    const sec = pad(date.getUTCSeconds().toString(), 2);
+    const ms =  pad(date.getUTCMilliseconds().toString(), 3);
+    return `${day}${hour}:${min}:${sec}.${ms}`;
   }
 
   /**
