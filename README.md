@@ -1,8 +1,6 @@
 # elapsy
 Elapsy is a singleton class that calculates the elapsed time from the moment the first instance until the moment one of the possible functions is called.
 
-Elapsed ir writen in ECMA 6.
-
 ## Install
 
 ```sh
@@ -60,7 +58,7 @@ console.log(formatedElapsed);
 
 Insert the formated (hh:mm:ss.ms) string of the current elapsed time in the right end of the terminal.
 
-You can pass a [chalk](https://www.npmjs.com/package/chalk) color to the method, and the default is blue;
+You can pass a [chalk](https://www.npmjs.com/package/chalk) color to the method (default is blue) and if you want to show the miliseconds;
 
 Example:
 ![](https://i.imgur.com/e6uhlB1.png)
@@ -68,6 +66,5 @@ Example:
 ```javascript
 const elapsy = new Elapsy();
 
-elapsy.log();
+elapsy.log('white', false);
 ```
-

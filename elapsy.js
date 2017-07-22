@@ -51,7 +51,7 @@ class Elapsy {
    *          1 day, 12:43:17.385
    *          428 days, 04:58:23.032
    */
-  formated() {
+  formated(showMs) {
     const elapsedTime = this.time();
     const date = new Date(elapsedTime);
 
@@ -62,8 +62,11 @@ class Elapsy {
     const hour = pad(date.getUTCHours().toString(), 2);
     const min = pad(date.getUTCMinutes().toString(), 2);
     const sec = pad(date.getUTCSeconds().toString(), 2);
-    const ms =  pad(date.getUTCMilliseconds().toString(), 3);
-    return `${day}${hour}:${min}:${sec}.${ms}`;
+    if (showMs) {
+      const ms =  pad(date.getUTCMilliseconds().toString(), 3);
+      return `${day}${hour}:${min}:${sec}.${ms}`;
+    }
+    return `${day}${hour}:${min}:${sec}`;
   }
 
   /**
@@ -74,9 +77,9 @@ class Elapsy {
    * @example
    * [WORKING] 5 links crawled                                   [00:00:03.071]
    */
-  log(color = 'blue') {
+  log(color = 'blue', showMs) {
     const width = process.stdout.columns - 2;
-    const elapsed = this.formated();
+    const elapsed = this.formated(showMs);
     const position = width - elapsed.length;
     process.stdout.cursorTo(position);
     process.stdout.write(chalk[color](`[${elapsed}]`));
